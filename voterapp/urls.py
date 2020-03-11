@@ -19,6 +19,9 @@ from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from voter import views
 from .router import router
+from rest_framework_swagger.views import get_swagger_view
+from rest_framework.schemas.coreapi import AutoSchema
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +34,6 @@ urlpatterns = [
     path('election/', views.ElectionView.as_view(), name='election'),
     path('app-download/', views.AppDownloadView.as_view(), name='app-download'),
     path('extended-data/', views.ExtendedDataView.as_view(), name='extended-data'),
+    path('swagger-docs/', get_swagger_view(title='Voterapp API')),
 
 ]
